@@ -41,9 +41,7 @@ public class Program {
         }
     }
 
-    /**
-     * Инициализация объектов игры
-     */
+
     private static void initialize(){
 
         fieldSizeX = 5;
@@ -57,15 +55,7 @@ public class Program {
 
     }
 
-    /**
-     * Отрисовка игрового поля
-     *
-     *     +-1-2-3-
-     *     1|*|X|0|
-     *     2|*|*|0|
-     *     3|*|*|0|
-     *     --------
-     */
+
     private static void printField(){
         System.out.print("+");
         for (int x = 0; x < fieldSizeX * 2 + 1; x++){
@@ -88,9 +78,7 @@ public class Program {
 
     }
 
-    /**
-     * Обработка хода игрока (человек)
-     */
+
     private static void humanTurn(){
         int x, y;
 
@@ -125,29 +113,13 @@ public class Program {
         while (!isCellValid(x, y) || !isCellEmpty(x, y));
         field[x][y] = DOT_HUMAN;
     }
-    /**
-     * Проверка, ячейка является пустой (DOT_EMPTY)
-     * @param x
-     * @param y
-     * @return
-     */
+
     private static boolean isCellEmpty(int x, int y){
         return field[x][y] == DOT_EMPTY;
     }
-    /**
-     * Проверка корректности ввода
-     * (координаты хода не должны превышать размерность игрового поля)
-     * @param x
-     * @param y
-     * @return
-     */
     private static boolean isCellValid(int x, int y){
         return x >= 0 && x < fieldSizeX && y >= 0 && y < fieldSizeY;
     }
-
-    /**
-     * Обработка хода компьютера
-     */
     private static void aiTurn(){
         //чучуть по-умнее
         int x = -1, y = -1;
@@ -175,12 +147,6 @@ public class Program {
         field[x][y] = DOT_AI;
     }
 
-    /**
-     * Проверка состояния игры
-     * @param c фишка игрока
-     * @param s победный слоган
-     * @return
-     */
     private static boolean checkGameState(char c, String s){
         if (checkWin(c)) {
             System.out.println(s);
@@ -194,11 +160,6 @@ public class Program {
         return false; // Игра продолжается
     }
 
-    /**
-     * Проверка победы
-     * @param c
-     * @return
-     */
     private static boolean checkWin(char c){
         int size = field.length;
         int winCount = WIN_COUNT;
@@ -249,26 +210,7 @@ public class Program {
 
     }
 
-    private static boolean checkWinV2(char c){
 
-
-        for (int x = 0; x < fieldSizeX; x++){
-            for (int y = 0; y < fieldSizeY; y++){
-
-            }
-        }
-
-        return false;
-    }
-
-    static boolean check1(int x, int y, int win){
-        return false;
-    }
-
-    /**
-     * Проверка на ничью
-     * @return
-     */
     private static boolean checkDraw(){
         for (int x = 0; x < fieldSizeX; x++){
             for (int y = 0; y < fieldSizeY; y++){
